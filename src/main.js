@@ -1,5 +1,23 @@
-import { tarjetaDataString } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop } from './data.js';
 import data from './data/pokemon/pokemon.js';
+
+//funciones de apoyo
+function top10Aparicion(itemTop){
+  //segun el menu seleccionado se ordenara en forma ascendente o descendente
+  const orden = itemTop==='masAparicion'?'descendente':'ascendente'
+  const clave = 'spawn-chance'
+  //paso1: ordenar segun aparicion (spawn-chance)
+  //ordenarArregloNumero recibe la clave el criterio de orden y la data
+  // retorna el arreglo ordenado segun la clave
+  const dataOrdenada = ordenarArregloNumero(clave, orden, data)
+  console.log(dataOrdenada)
+  //paso2:cortar los 10 primeros
+  //recibe la data ordenada y me devuelve los 10 primeros
+  const dataTop10=cortarTop(dataOrdenada,10)
+ //paso3: mostrar los 10 primeros (top10)
+  bloqueTarjetas.innerHTML = tarjetaDataString(dataTop10)  
+}
+
 
 const bloqueTarjetas = document.getElementById("bloqueTarjetas");
 bloqueTarjetas.innerHTML = tarjetaDataString(data)
@@ -8,19 +26,19 @@ bloqueTarjetas.innerHTML = tarjetaDataString(data)
 const tipoPokemon = document.getElementsByClassName("tipoPokemon")
 const menuPrincipal = document.getElementsByClassName("menuPrincipal")
 const menuTipos = document.querySelector(".menu-tipos")
-const menuOrdenar= document.getElementsByClassName("itemOrdenar")
-const menuTop= document.getElementsByClassName("itemTop")
+const menuOrdenar= document.getElementsByClassName("menuOrdenar")
+const menuTop= document.getElementsByClassName("menuTop")
 
-//para el menu filtrar tipo historia Nª3
+//para ocultar menu filtrar cuando se hace clic a un tipo
 for (const tipo of tipoPokemon) {
   tipo.addEventListener("click", () => {
-    //el console seria sustituido por el llamado a funcion que realice el filtrado
+    //el console seria sustituido por el llamado a funcion que realice el filtrado his1
     console.log(tipo.name)
     menuTipos.style.display = 'none'
   })
 }
 
-//para el menu ordenar para historia Nº2
+//para ocultar menu ordenar cuando se hace clic a un item
 for(const item of menuOrdenar){
   item.addEventListener("click",()=>{
     //el console seria sustituido por el llamado a funcion que realice el ordenado
@@ -28,16 +46,18 @@ for(const item of menuOrdenar){
     item.parentElement.parentElement.style.display='none'
   })
 }
-//para el menu top para historia Nº4
+//para ocultar  el menu top cuando se hace clic a un item  para historia Nº4
 for(const item of menuTop){
   item.addEventListener("click",()=>{
     //el console seria sustituido por el llamado a funcion que devuelva el top10
     console.log(item.name)
+    top10Aparicion(item.name)
     item.parentElement.parentElement.style.display='none'
   })
 }
 
-// for(const elemento of menuPrincipal){
+// como el javascript modificar el style el hover del css ya no funciona
+// Añadimos a los 3 menus los eventos cuando entra el mouse y sale el mouse similar al hover
 for(let i=0;i<menuPrincipal.length;i++){
   const elemento=menuPrincipal[i];
   elemento.addEventListener('mouseenter', () => {
