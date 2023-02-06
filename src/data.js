@@ -1,5 +1,7 @@
 // estas funciones son de ejemplo
 
+//import pokemon from "./data/pokemon/pokemon";
+
 export const example = () => {
   return 'example';
 };
@@ -24,6 +26,9 @@ export const tarjetaDataString = (data) => {
   return tarjetaString;
 };
 
+
+
+
 export const ordenarArregloNumero = (clave, orden, data) => {
   const dataOrdenada={}
   if(orden==='ascendente'){
@@ -39,3 +44,9 @@ export const cortarTop = (dataOrdenada,top) => {
   dataTop10.pokemon=dataOrdenada.pokemon.slice(0,top)
   return dataTop10;
 };
+ 
+export const filtrarTipos = (data, tipo) => {
+  const dataFiltrada = data.pokemon.filter((pokemon) => pokemon.type.includes(tipo))
+    console.log(dataFiltrada);
+    return{pokemon: dataFiltrada}
+}

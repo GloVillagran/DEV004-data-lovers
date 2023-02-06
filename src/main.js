@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, cortarTop } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 //funciones de apoyo
@@ -33,8 +33,11 @@ const menuTop= document.getElementsByClassName("menuTop")
 for (const tipo of tipoPokemon) {
   tipo.addEventListener("click", () => {
     //el console seria sustituido por el llamado a funcion que realice el filtrado his1
-    console.log(tipo.name)
+    console.log(data.pokemon)
+    console.log(tipo.name.toString())
     menuTipos.style.display = 'none'
+    const pokemonesTipo = filtrarTipos(data, tipo.name)
+    bloqueTarjetas.innerHTML = tarjetaDataString(pokemonesTipo)
   })
 }
 
