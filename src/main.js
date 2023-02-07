@@ -1,6 +1,13 @@
 import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, ordenarAlfabeticamente, ordenarAlfabeticamenteDescendente } from './data.js';
-import data from './data/pokemon/pokemon.js';
+import data from './data/pokemon/pokemon.js'
 
+//se agrega toda la data con ..., para que se muestre la lista de pokemones de la página principal
+const dataDefecto = { 
+  pokemon: [
+    ...data.pokemon
+  ]
+  
+}
 //funciones de apoyo
 function top10Aparicion(itemTop){
   //segun el menu seleccionado se ordenara en forma ascendente o descendente
@@ -48,7 +55,7 @@ for(const item of menuOrdenar){
     console.log(item.name)
     item.parentElement.parentElement.style.display='none'  
     if (item.name === "defecto") {
-      bloqueTarjetas.innerHTML = tarjetaDataString(data);
+      bloqueTarjetas.innerHTML = tarjetaDataString(dataDefecto);
     }
     
     console.log("aqui")
