@@ -26,9 +26,6 @@ export const tarjetaDataString = (data) => {
   return tarjetaString;
 };
 
-
-
-
 export const ordenarArregloNumero = (clave, orden, data) => {
   const dataOrdenada={}
   if(orden==='ascendente'){
@@ -47,6 +44,11 @@ export const cortarTop = (dataOrdenada,top) => {
  
 export const filtrarTipos = (data, tipo) => {
   const dataFiltrada = data.pokemon.filter((pokemon) => pokemon.type.includes(tipo))
-    console.log(dataFiltrada);
-    return{pokemon: dataFiltrada}
+  console.log(dataFiltrada);
+  return{pokemon: dataFiltrada}
 }
+
+export const buscarPorNombre = (data,nombreBuscar) => {
+  const dataFiltrada = data.pokemon.filter((pokemon) => pokemon.name.startsWith(nombreBuscar))
+  return{pokemon: dataFiltrada}
+};
