@@ -2,20 +2,37 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: inter;
 }
 
 header {
-    background-color: #477D45;
-    padding: 20px;
+    background-color: #3C6255;
+   
     color: #fff;
 }
 
+ #titulo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 20px;
+    font-size: 25px;
+ }
+ #titulo img{
+    width: 60px;
+
+
+ }
+/* h1 {
+    display: block;
+    padding: 20px;
+} */
 #bloqueTarjetas {
     display: flex;
-    margin: 20px 30px;
+    padding: 20px 30px;
     flex-wrap: wrap;
     gap: 5%;
-
+    background-color: #EAE7B1;
 }
 
 .tarjeta {
@@ -44,3 +61,77 @@ header {
 .imagenPokemon {
     width: 100%;
 }
+
+/*css para la maquetacion de los menus principales*/
+
+nav{
+    width: 100%;
+    background-color: #61876E;
+    font-size: 22px; 
+    font-weight: bolder; 
+  }
+  .menu-horizontal{
+    list-style: none;
+    display: flex;
+    justify-content: space-between
+  }
+  
+  .imagenMenu{
+    display: flex;
+    align-items: center;
+    padding: 0px 10px;
+  }
+  .imagenMenu>a{
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;  
+  }
+
+
+  .menu-horizontal>li:hover{
+    background-color: #3C6255;
+  }
+  
+  .menu-vertical{
+    position: absolute;/* independiente del resto*/
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color: #A6BB8D;
+  
+  }
+  .menu-horizontal li:hover .menu-vertical{
+    display:block;
+  }
+  .menu-horizontal li:hover .menu-tipos{
+    display: flex;
+    width: 400px;
+    justify-content: space-around;
+  }
+  .menu-vertical li:hover{
+    background-color: #3C6255;
+  }
+  
+  
+  .menu-vertical li a{
+    display: block;
+    color: white;
+    padding: 5px 15px 5px 20px;
+    text-decoration: none;
+  }
+  
+  .buscar{
+    width: 40%;
+    display: flex;
+    justify-content: center;/*centrado horizontal*/
+    align-items: center;/*centrado vertical*/
+    gap: 5px;
+  }
+  .buscar input{
+    width: 80%;
+    height: 35%;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 15px;
+  }

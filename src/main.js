@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre, ordenarAlfabeticamente, ordenarAlfabeticamenteDescendente } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente } from './data.js';
 import data from './data/pokemon/pokemon.js'
 
 //se agrega toda la data con ..., para que se muestre la lista de pokemones de la página principal
@@ -59,7 +59,7 @@ for (const item of menuOrdenar) {
     }
 
     if (item.name === "AZ") {
-      const ordenarPokemones = ordenarAlfabeticamente(data, item.name)
+      const ordenarPokemones = ordenarAlfabeticamenteAscendente(data, item.name)
       bloqueTarjetas.innerHTML = tarjetaDataString(ordenarPokemones)
     }
     else if (item.name === "ZA") {

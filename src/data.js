@@ -2,15 +2,6 @@
 
 //import pokemon from "./data/pokemon/pokemon";
 
-export const example = () => {
-  return 'example';
-};
-
-export const anotherExample = () => {
-  return 'OMG';
-};
-
-
 export const tarjetaDataString = (data) => {
   let tarjetaString = ""
   for (const pokemon of data.pokemon) {
@@ -52,29 +43,30 @@ export const buscarPorNombre = (data, nombreBuscar) => {
   const dataFiltrada = data.pokemon.filter((pokemon) => pokemon.name.startsWith(nombreBuscar))
   return { pokemon: dataFiltrada }
 }
-
-export const ordenarAlfabeticamente = (data) => {
-  const dataOrdenada = data.pokemon.sort((a, b) => {
-    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
-    if (nameA < nameB) {
+//ordenado de la A-Z (codigo para string)
+export const ordenarAlfabeticamenteAscendente = (data) => {
+  const dataOrdenada = data.pokemon.sort((a, b) => { // a y b son dos parametros que se comparan
+    const nameA = a.name.toUpperCase(); // convierte los string a mayusculas para que se ordene alfabeticamente
+    const nameB = b.name.toUpperCase(); 
+    if (nameA < nameB) { //a se ordena antes que b
       return -1;
     }
-    if (nameA > nameB) {
+    if (nameA > nameB) { //b se ordena antes que a
       return 1;
     }
 
-    // names must be equal
+    // no hay cambios
     return 0;
   });
 
   return { pokemon: dataOrdenada }
 }
 
+//ordenado de la Z-A
 export const ordenarAlfabeticamenteDescendente = (data) => {
   const dataOrdenada = data.pokemon.sort((a, b) => {
-    const nameA = a.name.toUpperCase(); // ignore upper and lowercase
-    const nameB = b.name.toUpperCase(); // ignore upper and lowercase
+    const nameA = a.name.toUpperCase();
+    const nameB = b.name.toUpperCase(); 
     if (nameA < nameB) {
       return 1;
     }
@@ -82,7 +74,6 @@ export const ordenarAlfabeticamenteDescendente = (data) => {
       return -1;
     }
 
-    // names must be equal
     return 0;
   });
 

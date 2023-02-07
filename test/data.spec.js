@@ -1,4 +1,4 @@
-import { example, anotherExample, tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre } from '../src/data.js';
+import { tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre, cortarTop, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente } from '../src/data.js';
 //import data from '../src/data/pokemon/pokemon.js';
 
 //data para hacer pruebas 
@@ -59,29 +59,6 @@ const data = {
 }
 
 
-
-describe('example', () => {
-  it('is a function', () => {
-    expect(typeof example).toBe('function');
-  });
-
-  it('returns `example`', () => {
-    expect(example()).toBe('example');
-  });
-});
-
-
-describe('anotherExample', () => {
-  it('is a function', () => {
-    expect(typeof anotherExample).toBe('function');
-  });
-
-  it('returns `anotherExample`', () => {
-    expect(anotherExample()).toBe('OMG');
-  });
-});
-
-
 describe('tarjetaDataString', () => {
   it('es funcion', () => {
     expect(typeof tarjetaDataString).toBe('function');
@@ -99,11 +76,13 @@ describe('ordenarArregloNumero', () => {
   });
 
   it('ordenarArregloNumero("spawn-chance", "ascendente", data) retorna un objeto', () => {
-    expect(typeof ordenarArregloNumero("spawn-chance", "ascendente", data)).toBe('object');
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(typeof ordenarArregloNumero("spawn-chance", "ascendente", midata)).toBe('object');
   });
 
   it('ordenarArregloNumero("spawn-chance", "descendente", data) retorna un arreglo de objetos ordenados por el spawn chance', () => {
-    expect(ordenarArregloNumero("spawn-chance", "descendente", data)).toStrictEqual(
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(ordenarArregloNumero("spawn-chance", "descendente", midata)).toStrictEqual(
       {
         "pokemon": [
          
@@ -178,17 +157,6 @@ describe('filtrarTipos', () => {
         "pokemon": [
          
           {
-            "num": "005",
-            "name": "venusaur",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.8",
-            "type": [
-              "oscuro",
-              "normal"
-            ],
-          },
-        
-          {
             "num": "001",
             "name": "bulbasaur",
             "pokemon-rarity": "normal",
@@ -196,6 +164,16 @@ describe('filtrarTipos', () => {
             "type": [
               "agua",
               "oscuro"
+            ],
+          },
+          {
+            "num": "005",
+            "name": "venusaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "oscuro",
+              "normal"
             ],
           },
           {
@@ -207,7 +185,7 @@ describe('filtrarTipos', () => {
               "dragon",
               "oscuro"
             ]
-          },
+          }
         ]
       });
   });
@@ -226,6 +204,194 @@ describe('buscarPorNombre', () => {
     expect(buscarPorNombre(data, "ch")).toStrictEqual(
       {
         "pokemon": [
+          
+          {
+            "num": "002",
+            "name": "charizard",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.35",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          {
+            "num": "009",
+            "name": "charmander",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          }
+         
+        ]
+      });
+  });
+});
+
+
+describe('cortarTop', () => {
+  it('es funcion', () => {
+    expect(typeof cortarTop).toBe('function');
+  });
+
+  it('cortarTop(data, top) retorna un objeto', () => {
+    expect(typeof cortarTop(data, 3)).toBe('object');
+  });
+
+  it('cortarTop(data, top) retorna los 3 primeros', () => {
+    expect(cortarTop(data, 3)).toStrictEqual(
+      {
+        "pokemon": [
+          
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          },
+          {
+            "num": "005",
+            "name": "venusaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "oscuro",
+              "normal"
+            ],
+          },
+          {
+            "num": "007",
+            "name": "squirtle",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.1",
+            "type": [
+              "dragon",
+              "oscuro"
+            ]
+          }
+         
+        ]
+      });
+  });
+});
+
+
+describe('ordenarAlfabeticamenteAscendente', () => {
+  it('es funcion', () => {
+    expect(typeof ordenarAlfabeticamenteAscendente).toBe('function');
+  });
+
+  it('ordenarAlfabeticamenteAscendente(data) retorna un objeto', () => {
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(typeof ordenarAlfabeticamenteAscendente(midata)).toBe('object');
+  });
+
+  it('ordenarAlfabeticamenteAscendente(data) retorna los pokemones ordenados alfabeticamente', () => {
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(ordenarAlfabeticamenteAscendente(midata)).toStrictEqual(
+      {
+        "pokemon": [
+          
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          },
+          {
+            "num": "002",
+            "name": "charizard",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.35",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          {
+            "num": "009",
+            "name": "charmander",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          
+          {
+            "num": "007",
+            "name": "squirtle",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.1",
+            "type": [
+              "dragon",
+              "oscuro"
+            ]
+          },
+          {
+            "num": "005",
+            "name": "venusaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "oscuro",
+              "normal"
+            ],
+          }
+        
+        ]
+      });
+  });
+});
+
+
+describe('ordenarAlfabeticamenteDescendente', () => {
+  it('es funcion', () => {
+    expect(typeof ordenarAlfabeticamenteDescendente).toBe('function');
+  });
+
+  it('ordenarAlfabeticamenteDescendente(data) retorna un objeto', () => {
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(typeof ordenarAlfabeticamenteDescendente(midata)).toBe('object');
+  });
+
+  it('ordenarAlfabeticamenteDescendente(data) retorna los pokemones ordenados alfabeticamente ZA', () => {
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(ordenarAlfabeticamenteDescendente(midata)).toStrictEqual(
+      {
+        "pokemon": [
+          {
+            "num": "005",
+            "name": "venusaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "oscuro",
+              "normal"
+            ],
+          },
+          {
+            "num": "007",
+            "name": "squirtle",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.1",
+            "type": [
+              "dragon",
+              "oscuro"
+            ]
+          },
           {
             "num": "009",
             "name": "charmander",
@@ -246,7 +412,17 @@ describe('buscarPorNombre', () => {
               "volador"
             ],
           },
-         
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          }
+        
         ]
       });
   });
