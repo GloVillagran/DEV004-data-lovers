@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, ordenarAlfabeticamente, ordenarAlfabeticamenteDescendente } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 //funciones de apoyo
@@ -46,7 +46,20 @@ for(const item of menuOrdenar){
   item.addEventListener("click",()=>{
     //el console seria sustituido por el llamado a funcion que realice el ordenado
     console.log(item.name)
-    item.parentElement.parentElement.style.display='none'
+    item.parentElement.parentElement.style.display='none'  
+    if (item.name === "defecto") {
+      bloqueTarjetas.innerHTML = tarjetaDataString(data);
+    }
+    
+    console.log("aqui")
+    if (item.name === "AZ") { 
+    const ordenarPokemones = ordenarAlfabeticamente(data, item.name)
+    bloqueTarjetas.innerHTML = tarjetaDataString(ordenarPokemones)
+  }
+    else if (item.name === "ZA") {
+    const ordenarPokemones = ordenarAlfabeticamenteDescendente(data, item.name)
+    bloqueTarjetas.innerHTML = tarjetaDataString(ordenarPokemones)
+  }
   })
 }
 //para ocultar  el menu top cuando se hace clic a un item  para historia Nº4
