@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre } from './data.js';
 import data from './data/pokemon/pokemon.js';
 
 //funciones de apoyo
@@ -14,7 +14,7 @@ function top10Aparicion(itemTop){
   //paso2:cortar los 10 primeros
   //recibe la data ordenada y me devuelve los 10 primeros
   const dataTop10=cortarTop(dataOrdenada,10)
- //paso3: mostrar los 10 primeros (top10)
+  //paso3: mostrar los 10 primeros (top10)
   bloqueTarjetas.innerHTML = tarjetaDataString(dataTop10)  
 }
 
@@ -72,3 +72,10 @@ for(let i=0;i<menuPrincipal.length;i++){
   })
 }
 
+const inputBuscar = document.getElementById("inputBuscar")
+inputBuscar.addEventListener('input',()=>{
+  //console.log(inputBuscar.value)
+
+  const FiltroNombre=buscarPorNombre(data,inputBuscar.value)
+  bloqueTarjetas.innerHTML = tarjetaDataString(FiltroNombre)  
+});
