@@ -1,4 +1,4 @@
-import { example, anotherExample, tarjetaDataString, ordenarArregloNumero } from '../src/data.js';
+import { example, anotherExample, tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre } from '../src/data.js';
 //import data from '../src/data/pokemon/pokemon.js';
 
 //data para hacer pruebas 
@@ -16,7 +16,7 @@ const data = {
     },
     {
       "num": "005",
-      "name": "karen",
+      "name": "venusaur",
       "pokemon-rarity": "normal",
       "spawn-chance": "0.8",
       "type": [
@@ -26,24 +26,35 @@ const data = {
     },
     {
       "num": "007",
-      "name": "chuki",
+      "name": "squirtle",
       "pokemon-rarity": "normal",
       "spawn-chance": "0.1",
       "type": [
         "dragon",
         "oscuro"
-      ],
+      ]
     },
     {
       "num": "002",
-      "name": "fantasma",
+      "name": "charizard",
       "pokemon-rarity": "normal",
       "spawn-chance": "0.35",
       "type": [
         "agua",
         "volador"
       ],
+    },
+    {
+      "num": "009",
+      "name": "charmander",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.8",
+      "type": [
+        "agua",
+        "volador"
+      ],
     }
+
   ]
 }
 
@@ -95,9 +106,10 @@ describe('ordenarArregloNumero', () => {
     expect(ordenarArregloNumero("spawn-chance", "descendente", data)).toStrictEqual(
       {
         "pokemon": [
+         
           {
             "num": "005",
-            "name": "karen",
+            "name": "venusaur",
             "pokemon-rarity": "normal",
             "spawn-chance": "0.8",
             "type": [
@@ -106,8 +118,18 @@ describe('ordenarArregloNumero', () => {
             ],
           },
           {
+            "num": "009",
+            "name": "charmander",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          {
             "num": "002",
-            "name": "fantasma",
+            "name": "charizard",
             "pokemon-rarity": "normal",
             "spawn-chance": "0.35",
             "type": [
@@ -127,14 +149,104 @@ describe('ordenarArregloNumero', () => {
           },
           {
             "num": "007",
-            "name": "chuki",
+            "name": "squirtle",
             "pokemon-rarity": "normal",
             "spawn-chance": "0.1",
             "type": [
               "dragon",
               "oscuro"
+            ]
+          },
+        ]
+      });
+  });
+});
+
+
+describe('filtrarTipos', () => {
+  it('es funcion', () => {
+    expect(typeof filtrarTipos).toBe('function');
+  });
+
+  it('filtrarTipos(data, tipo) retorna un objeto', () => {
+    expect(typeof filtrarTipos(data, "oscuro")).toBe('object');
+  });
+
+  it('filtrarTipos(data,tipo) retorna un arreglo de objetos filtrados', () => {
+    expect(filtrarTipos(data, "oscuro")).toStrictEqual(
+      {
+        "pokemon": [
+         
+          {
+            "num": "005",
+            "name": "venusaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "oscuro",
+              "normal"
             ],
           },
+        
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          },
+          {
+            "num": "007",
+            "name": "squirtle",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.1",
+            "type": [
+              "dragon",
+              "oscuro"
+            ]
+          },
+        ]
+      });
+  });
+});
+
+describe('buscarPorNombre', () => {
+  it('es funcion', () => {
+    expect(typeof buscarPorNombre).toBe('function');
+  });
+
+  it('buscarPorNombre(data, nombreBuscar) retorna un objeto', () => {
+    expect(typeof buscarPorNombre(data, "ch")).toBe('object');
+  });
+
+  it('buscarPorNombre(data, nombreBuscar) retorna los pokemones que coinciden con las primeras letras de su nombre', () => {
+    expect(buscarPorNombre(data, "ch")).toStrictEqual(
+      {
+        "pokemon": [
+          {
+            "num": "009",
+            "name": "charmander",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          {
+            "num": "002",
+            "name": "charizard",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.35",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+         
         ]
       });
   });
