@@ -48,16 +48,7 @@ header {
     justify-content: center;
 }
 
-@media (max-width: 700px){
-    #bloqueTarjetas {
-        gap: 20%;
 
-    }
-    .tarjeta {
-        width: 40%;
-
-    }
-}
 .imagenPokemon {
     width: 100%;
 }
@@ -135,3 +126,39 @@ nav{
     padding: 10px;
     border-radius: 15px;
   }
+
+  @media (max-width: 700px){
+    #bloqueTarjetas {
+        gap: 20%;
+
+    }
+    .tarjeta {
+        width: 40%;
+
+    }
+    /*en dispositivo movil esta en columna el menu*/
+    .menu-horizontal{
+      flex-direction: column;
+    }
+    /*en dispositivo movil el buscar es primero*/
+    .buscar{
+      order:1;
+      width: 100%;
+      margin-top: 5px;
+    }
+    .menuPrincipal{
+      order:2
+    }
+    .menuPrincipal:first-child{
+      order:3
+    }
+
+    .menu-vertical{
+      position: relative;
+      width: 100%;
+    }
+
+    .menu-horizontal li:hover .menu-tipos{
+      width: 100%;
+    }
+}
