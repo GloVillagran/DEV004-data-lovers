@@ -89,6 +89,10 @@ for (let i = 0; i < menuPrincipal.length; i++) {
   elemento.addEventListener('mouseleave', () => {
     elemento.firstElementChild.nextElementSibling.style.display = 'none'
   })
+
+  elemento.addEventListener('click', () => {
+    elemento.firstElementChild.nextElementSibling.style.display = i === 0 ? 'flex' : 'block'
+  })
 }
 
 const inputBuscar = document.getElementById("inputBuscar")
