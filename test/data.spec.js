@@ -58,6 +58,74 @@ const data = {
   ]
 }
 
+const data2 = {
+  "pokemon": [
+   
+    {
+      "num": "001",
+      "name": "bulbasaur",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.3",
+      "type": [
+        "agua",
+        "oscuro"
+      ],
+    },
+    {
+      "num": "001",
+      "name": "bulbasaur",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.3",
+      "type": [
+        "agua",
+        "oscuro"
+      ],
+    },
+    {
+      "num": "005",
+      "name": "venusaur",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.8",
+      "type": [
+        "oscuro",
+        "normal"
+      ],
+    },
+    {
+      "num": "007",
+      "name": "squirtle",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.1",
+      "type": [
+        "dragon",
+        "oscuro"
+      ]
+    },
+    {
+      "num": "002",
+      "name": "charizard",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.35",
+      "type": [
+        "agua",
+        "volador"
+      ],
+    },
+    {
+      "num": "009",
+      "name": "charmander",
+      "pokemon-rarity": "normal",
+      "spawn-chance": "0.8",
+      "type": [
+        "agua",
+        "volador"
+      ],
+    }
+
+  ]
+}
+
+
 
 describe('tarjetaDataString', () => {
   it('es funcion', () => {
@@ -294,11 +362,21 @@ describe('ordenarAlfabeticamenteAscendente', () => {
   });
 
   it('ordenarAlfabeticamenteAscendente(data) retorna los pokemones ordenados alfabeticamente', () => {
-    const midata=JSON.parse(JSON.stringify(data))
+    const midata=JSON.parse(JSON.stringify(data2))
     expect(ordenarAlfabeticamenteAscendente(midata)).toStrictEqual(
       {
         "pokemon": [
           
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          },
           {
             "num": "001",
             "name": "bulbasaur",
@@ -368,7 +446,7 @@ describe('ordenarAlfabeticamenteDescendente', () => {
   });
 
   it('ordenarAlfabeticamenteDescendente(data) retorna los pokemones ordenados alfabeticamente ZA', () => {
-    const midata=JSON.parse(JSON.stringify(data))
+    const midata=JSON.parse(JSON.stringify(data2))
     expect(ordenarAlfabeticamenteDescendente(midata)).toStrictEqual(
       {
         "pokemon": [
@@ -421,9 +499,21 @@ describe('ordenarAlfabeticamenteDescendente', () => {
               "agua",
               "oscuro"
             ],
+          },
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
           }
         
         ]
       });
   });
+
+
 });
