@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente,calculoPorcentaje } from './data.js';
 import data from './data/pokemon/pokemon.js'
 
 //se agrega toda la data con ..., para que se muestre la lista de pokemones de la página principal
@@ -35,6 +35,72 @@ const menuPrincipal = document.getElementsByClassName("menuPrincipal")
 const menuTipos = document.querySelector(".menu-tipos")
 const menuOrdenar = document.getElementsByClassName("menuOrdenar")
 const menuTop = document.getElementsByClassName("menuTop")
+const menuEstadistica = document.getElementById("menuEstadistica")
+
+menuEstadistica.addEventListener("click", () => {
+  //que aparezca la tablas
+  bloqueTarjetas.innerHTML = `
+  <div class="estadistica">
+        <h2>ESTADISTICA DE TIPOS</h2>
+        <table>          
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Cantidad Total</th>
+              <th>% del Total</th>
+              <th>Promedio Ataque</th>
+              <th>Promedio Defensa</th>
+              <th>Promedio de Puntos de Salud (HP)</th>
+            </tr>
+          </thead>          
+          <tbody id="tablaContenido">           
+                      
+          </tbody>
+        </table>
+      </div>
+  `
+  const tablaContenido = document.getElementById("tablaContenido")
+  
+  //construir funciones para cantidad, porcentaje, promedio ataque, promedio defensa, promedio de puntos de vida
+  //Construir arreglo de objetos antes de pintar
+  const miContenido =[]
+
+/*   const pruebaFiltrado=filtrarTipos(data, "water" )
+  console.log(pruebaFiltrado.pokemon.length) */
+
+  console.log(filtrarTipos(data,"water").pokemon.length)
+
+  for(const mitipo of tipoPokemon){
+    const arregloTipos=filtrarTipos(data,mitipo.name)
+    //calculo porcentaje porcentaje=(cantidadTipo/totalPokemon)x100
+    const dataCalculada=calculoPorcentaje(arregloTipos.pokemon.length,data.pokemon.length)
+    miContenido.push(
+      {
+        tipo: mitipo.innerHTML,
+        cantidad:arregloTipos.pokemon.length,
+        porcentaje:dataCalculada,
+        promedioAtaque:Math.random(),
+        promedioDefensa:Math.random(),
+        promedioHP:Math.random()
+      }
+    )
+  }
+  //pintar arreglo de objetos
+  for(const elemento of miContenido ){
+    tablaContenido.innerHTML += `
+      <tr>
+        <td>${elemento.tipo}</td>
+        <td>${elemento.cantidad}</td>
+        <td>${elemento.porcentaje}%</td>
+        <td>${elemento.promedioAtaque}</td>
+        <td>${elemento.promedioDefensa}</td>
+        <td>${elemento.promedioHP}</td>
+      </tr>
+  `
+  }
+})
+
+
 
 //para ocultar menu filtrar cuando se hace clic a un tipo
 for (const tipo of tipoPokemon) {

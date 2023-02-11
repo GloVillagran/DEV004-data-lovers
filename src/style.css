@@ -159,6 +159,10 @@ nav{
     .menuPrincipal{
       order:2
     }
+
+    #menuEstadistica{
+      order: 2;
+    }
     .menuPrincipal:first-child{
       order:3
     }
@@ -224,6 +228,9 @@ nav{
       
     }
 
+    td:nth-of-type(1){
+      background-color: #A6BB8D;
+    }
     
 }
 
