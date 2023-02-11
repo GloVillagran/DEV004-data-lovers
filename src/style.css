@@ -10,6 +10,9 @@ header {
    
     color: #fff;
 }
+body{
+  height: 100vh;
+}
 
  #titulo{
     display: flex;
@@ -33,6 +36,7 @@ header {
     flex-wrap: wrap;
     gap: 5%;
     background-color: #EAE7B1;
+    
 }
 
 .tarjeta {
@@ -161,4 +165,49 @@ nav{
     .menu-horizontal li:hover .menu-tipos{
       width: 100%;
     }
+}
+
+/* estilos de la tabla de estadistica*/
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+
+  @media screen and (max-width: 600px) {
+    table {
+        width:100%;
+    }
+    thead {
+        display: none;
+    }
+    td {
+      border: none;
+      border: 1px solid #b34646;
+  
+    }
+
+    /* cada celda ocupa toda la linea por lo tanto es como si estuviera vertical */
+    tbody td {
+        display: block;
+        padding: 5px 30px;
+    }
+
+    /* Para añadir los titulos al lado izquierdo en cada td en version mobil */
+    td:nth-of-type(1):before { content: "Tipo: "; font-weight: bold;}
+		td:nth-of-type(2):before { content: "Cantidad Total: "; font-weight: bold;}
+		td:nth-of-type(3):before { content: "% del Total: "; font-weight: bold; }
+		td:nth-of-type(4):before { content: "Promedio Ataque: "; font-weight: bold; }
+		td:nth-of-type(5):before { content: "Promedio Defensa: "; font-weight: bold; }
+		td:nth-of-type(6):before { content: "Promedio de Puntos de Salud (HP): "; font-weight: bold; }
+
+
+    tr{
+      display: block;
+      margin-bottom: 25px;
+    }
+}
+
+/* para escritorio */
+@media screen and (min-width: 600px) {
+
 }

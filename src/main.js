@@ -102,3 +102,4 @@ inputBuscar.addEventListener('input', () => {
   const FiltroNombre = buscarPorNombre(data, inputBuscar.value)
   bloqueTarjetas.innerHTML = tarjetaDataString(FiltroNombre)
 });
+
