@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente,calculoPorcentaje } from './data.js';
+import { tarjetaDataString, ordenarArregloNumero, cortarTop, filtrarTipos, buscarPorNombre, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente,calculoPorcentaje, calcularPromedioPorTipo } from './data.js';
 import data from './data/pokemon/pokemon.js'
 
 //se agrega toda la data con ..., para que se muestre la lista de pokemones de la página principal
@@ -74,14 +74,19 @@ menuEstadistica.addEventListener("click", () => {
     const arregloTipos=filtrarTipos(data,mitipo.name)
     //calculo porcentaje porcentaje=(cantidadTipo/totalPokemon)x100
     const dataCalculada=calculoPorcentaje(arregloTipos.pokemon.length,data.pokemon.length)
+    const promedioAtaque = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-attack') 
+
+    const promedioDefensa = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-defense') 
+    const promedioPuntosDeSalud = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'max-hp') 
+    console.log(promedioAtaque);
     miContenido.push(
       {
         tipo: mitipo.innerHTML,
         cantidad:arregloTipos.pokemon.length,
         porcentaje:dataCalculada,
-        promedioAtaque:Math.random(),
-        promedioDefensa:Math.random(),
-        promedioHP:Math.random()
+        promedioAtaque:promedioAtaque,
+        promedioDefensa:promedioDefensa,
+        promedioHP:promedioPuntosDeSalud
       }
     )
   }
@@ -168,4 +173,6 @@ inputBuscar.addEventListener('input', () => {
   const FiltroNombre = buscarPorNombre(data, inputBuscar.value)
   bloqueTarjetas.innerHTML = tarjetaDataString(FiltroNombre)
 });
+
+
 
