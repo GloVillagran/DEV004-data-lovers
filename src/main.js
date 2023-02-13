@@ -89,6 +89,7 @@ menuEstadistica.addEventListener("click", () => {
       }
     )
   }
+
   //pintar arreglo de objetos
   for(const elemento of miContenido ){
     tablaContenido.innerHTML += `

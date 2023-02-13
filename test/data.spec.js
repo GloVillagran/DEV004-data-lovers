@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre, cortarTop, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente } from '../src/data.js';
+import { tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre, cortarTop, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente,calculoPorcentaje } from '../src/data.js';
 //import data from '../src/data/pokemon/pokemon.js';
 
 //data para hacer pruebas 
@@ -441,6 +441,89 @@ describe('ordenarAlfabeticamenteDescendente', () => {
   });
 
   it('ordenarAlfabeticamenteDescendente(data) retorna un objeto', () => {
+    const midata=JSON.parse(JSON.stringify(data))
+    expect(typeof ordenarAlfabeticamenteDescendente(midata)).toBe('object');
+  });
+
+  it('ordenarAlfabeticamenteDescendente(data) retorna los pokemones ordenados alfabeticamente ZA', () => {
+    const midata=JSON.parse(JSON.stringify(data2))
+    expect(ordenarAlfabeticamenteDescendente(midata)).toStrictEqual(
+      {
+        "pokemon": [
+          {
+            "num": "005",
+            "name": "venusaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "oscuro",
+              "normal"
+            ],
+          },
+          {
+            "num": "007",
+            "name": "squirtle",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.1",
+            "type": [
+              "dragon",
+              "oscuro"
+            ]
+          },
+          {
+            "num": "009",
+            "name": "charmander",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.8",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          {
+            "num": "002",
+            "name": "charizard",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.35",
+            "type": [
+              "agua",
+              "volador"
+            ],
+          },
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          },
+          {
+            "num": "001",
+            "name": "bulbasaur",
+            "pokemon-rarity": "normal",
+            "spawn-chance": "0.3",
+            "type": [
+              "agua",
+              "oscuro"
+            ],
+          }
+        
+        ]
+      });
+  });
+
+
+});
+
+describe('calculoPorcentaje', () => {
+  it('es funcion', () => {
+    expect(typeof calculoPorcentaje).toBe('function');
+  });
+
+  it('calculoPorcentaje(cantidadTipo,totalPokemon) retorna un objeto', () => {
     const midata=JSON.parse(JSON.stringify(data))
     expect(typeof ordenarAlfabeticamenteDescendente(midata)).toBe('object');
   });
