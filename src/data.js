@@ -79,3 +79,10 @@ export const ordenarAlfabeticamenteDescendente = (data) => {
 
   return { pokemon: dataOrdenada }
 }
+
+//funcion para calcular el porcentaje por Tipo
+export const calculoPorcentaje = (cantidadTipo,totalPokemon) => {
+  const dataCalculada = (cantidadTipo/totalPokemon)*100
+
+  return dataCalculada.toFixed(2)
+}
