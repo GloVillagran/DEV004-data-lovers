@@ -74,8 +74,7 @@ menuEstadistica.addEventListener("click", () => {
     const arregloTipos=filtrarTipos(data,mitipo.name)
     //calculo porcentaje porcentaje=(cantidadTipo/totalPokemon)x100
     const dataCalculada=calculoPorcentaje(arregloTipos.pokemon.length,data.pokemon.length)
-    const promedioAtaque = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-attack') 
-
+    const promedioAtaque = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-attack') //llamado a la función de acuerdo al parametro que se quiere calcular
     const promedioDefensa = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-defense') 
     const promedioPuntosDeSalud = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'max-hp') 
     console.log(promedioAtaque);

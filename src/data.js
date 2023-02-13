@@ -88,16 +88,16 @@ export const calculoPorcentaje = (cantidadTipo,totalPokemon) => {
   return dataCalculada.toFixed(2)
 }
 
-//funcion reduce para calcular promedio de ataque por Tipo
-export const calcularPromedioPorTipo = (data, tipo, stat) => {
+//funcion reduce para calcular promedio de ataque por Tipo 
+export const calcularPromedioPorTipo = (data, tipo, stat) => { //se agregaron 3 parametros, el stat para acceda a la propiedad que quiere calcular(stat es un objeto)
   //console.log(data)
   //console.log(tipo)
   const dataFiltrada = data.filter(pokemon => pokemon.type.includes(tipo)) //si en el arreglo se incluye el tipo (ej. agua)
   //console.log(dataFiltrada);
   //console.log(typeof dataFiltrada[0].stats)
   //console.log(dataFiltrada[0].stats)
-  const sumaAtaques = dataFiltrada.reduce((acc,value) => acc+Number(value.stats[stat]), 0) //se ocupa corchetes para acceder a la propiedad del objeto ya que esta escrita con guión
+  const sumaAtaques = dataFiltrada.reduce((acc,value) => acc+Number(value.stats[stat]), 0) //los valores estaban en string, se paso a numero.
   return (sumaAtaques/dataFiltrada.length).toFixed(2) //resultado con dos decimales //length para saber la cantidad que hay de esos tipos
 }
 
-//funcion reduce para calcular promedio de defensa por Tipo
+
