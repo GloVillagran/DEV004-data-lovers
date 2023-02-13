@@ -523,10 +523,6 @@ describe('calculoPorcentaje', () => {
     expect(typeof calculoPorcentaje).toBe('function');
   });
 
-  it('calculoPorcentaje(cantidadTipo,totalPokemon) retorna un objeto', () => {
-    const midata=JSON.parse(JSON.stringify(data))
-    expect(typeof ordenarAlfabeticamenteDescendente(midata)).toBe('object');
-  });
 
   it('ordenarAlfabeticamenteDescendente(data) retorna los pokemones ordenados alfabeticamente ZA', () => {
     const midata=JSON.parse(JSON.stringify(data2))

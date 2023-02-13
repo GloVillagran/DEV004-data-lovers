@@ -65,7 +65,7 @@ menuEstadistica.addEventListener("click", () => {
   //Construir arreglo de objetos antes de pintar
   const miContenido =[]
 
-/*   const pruebaFiltrado=filtrarTipos(data, "water" )
+  /*   const pruebaFiltrado=filtrarTipos(data, "water" )
   console.log(pruebaFiltrado.pokemon.length) */
 
   console.log(filtrarTipos(data,"water").pokemon.length)
