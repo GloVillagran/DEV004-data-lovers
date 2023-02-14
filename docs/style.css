@@ -2,13 +2,17 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: inter;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 header {
     background-color: #3C6255;
    
     color: #fff;
+}
+body{
+  height: 100vh;
+  background-color: #EAE7B1;
 }
 
  #titulo{
@@ -32,7 +36,8 @@ header {
     padding: 20px 30px;
     flex-wrap: wrap;
     gap: 5%;
-    background-color: #EAE7B1;
+
+    
 }
 
 .tarjeta {
@@ -58,13 +63,11 @@ header {
 nav{
     width: 100%;
     background-color: #61876E;
-    font-size: 22px; 
-    font-weight: bolder; 
   }
   .menu-horizontal{
     list-style: none;
     display: flex;
-    justify-content: space-between
+    justify-content: space-between;
   }
   
   .imagenMenu{
@@ -77,6 +80,9 @@ nav{
     padding: 15px 20px;
     color: white;
     text-decoration: none;  
+    /* formato de letra del titulo de los menus */
+    font-size: 15px;
+    font-weight: bolder; 
   }
 
 
@@ -90,6 +96,7 @@ nav{
     list-style: none;
     width: 200px;
     background-color: #A6BB8D;
+
   
   }
   .menu-horizontal li:hover .menu-vertical{
@@ -110,6 +117,9 @@ nav{
     color: white;
     padding: 5px 15px 5px 20px;
     text-decoration: none;
+     /* formato de letra de los items de los submenus */
+    font-size: 15px;
+    font-weight: bolder; 
   }
   
   .buscar{
@@ -149,6 +159,10 @@ nav{
     .menuPrincipal{
       order:2
     }
+
+    #menuEstadistica{
+      order: 2;
+    }
     .menuPrincipal:first-child{
       order:3
     }
@@ -161,4 +175,78 @@ nav{
     .menu-horizontal li:hover .menu-tipos{
       width: 100%;
     }
+}
+
+/* estilos de la tabla de estadistica*/
+
+/*
+	Max width before this PARTICULAR table gets nasty. This query will take effect for any screen smaller than 760px and also iPads specifically.
+	*/
+  /* formato del titulo h2 para ambos casos movil y escritorio */
+  h2{
+    margin-bottom: 10px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bolder; 
+  }
+
+
+  @media screen and (max-width: 600px) {
+   
+
+   .estadistica{
+    width: 100%;
+   }
+    table {
+        width:100%;
+    }
+    thead {
+        display: none;
+    }
+    td { 
+      border: 1px solid #3C6255;  
+    }
+
+    /* cada celda ocupa toda la linea por lo tanto es como si estuviera vertical */
+    tbody td {
+        display: block;/*gracias a el cada celda ocupa toda la linea*/
+        padding: 6px 30px;
+    }
+
+    /* Para añadir los titulos al lado izquierdo en cada td en version mobil */
+    td:nth-of-type(1):before { content: "Tipo: "; font-weight: bold;}
+		td:nth-of-type(2):before { content: "Cantidad Total: "; font-weight: bold;}
+		td:nth-of-type(3):before { content: "% del Total: "; font-weight: bold; }
+		td:nth-of-type(4):before { content: "Promedio Ataque: "; font-weight: bold; }
+		td:nth-of-type(5):before { content: "Promedio Defensa: "; font-weight: bold; }
+		td:nth-of-type(6):before { content: "Promedio de Puntos de Salud (HP): "; font-weight: bold; }
+
+
+    tr{
+      display: block;
+      margin-bottom: 25px;
+      
+    }
+
+    td:nth-of-type(1){
+      background-color: #A6BB8D;
+    }
+    
+}
+
+/* para escritorio */
+@media screen and (min-width: 600px) {
+  .estadistica{
+    margin:  auto;
+  }
+  table, td,th { border-style: solid; border-collapse:collapse;padding: 7px;border-width: 1px;  }
+  thead{
+    background-color: #61876E;
+  }
+  tbody{
+    background-color: #A6BB8D;
+    text-align: center;
+  }
+
+
 }

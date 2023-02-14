@@ -17,7 +17,6 @@ function top10Aparicion(itemTop) {
   //ordenarArregloNumero recibe la clave el criterio de orden y la data
   // retorna el arreglo ordenado segun la clave
   const dataOrdenada = ordenarArregloNumero(clave, orden, data)
-  console.log(dataOrdenada)
   //paso2:cortar los 10 primeros
   //recibe la data ordenada y me devuelve los 10 primeros
   const dataTop10 = cortarTop(dataOrdenada, 10)
@@ -64,12 +63,6 @@ menuEstadistica.addEventListener("click", () => {
   //construir funciones para cantidad, porcentaje, promedio ataque, promedio defensa, promedio de puntos de vida
   //Construir arreglo de objetos antes de pintar
   const miContenido =[]
-
-  /*   const pruebaFiltrado=filtrarTipos(data, "water" )
-  console.log(pruebaFiltrado.pokemon.length) */
-
-  console.log(filtrarTipos(data,"water").pokemon.length)
-
   for(const mitipo of tipoPokemon){
     const arregloTipos=filtrarTipos(data,mitipo.name)
     //calculo porcentaje porcentaje=(cantidadTipo/totalPokemon)x100
@@ -77,7 +70,6 @@ menuEstadistica.addEventListener("click", () => {
     const promedioAtaque = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-attack') //llamado a la función de acuerdo al parametro que se quiere calcular
     const promedioDefensa = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'base-defense') 
     const promedioPuntosDeSalud = calcularPromedioPorTipo(data.pokemon, mitipo.name, 'max-hp') 
-    console.log(promedioAtaque);
     miContenido.push(
       {
         tipo: mitipo.innerHTML,
@@ -105,14 +97,9 @@ menuEstadistica.addEventListener("click", () => {
   }
 })
 
-
-
 //para ocultar menu filtrar cuando se hace clic a un tipo
 for (const tipo of tipoPokemon) {
   tipo.addEventListener("click", () => {
-    //el console seria sustituido por el llamado a funcion que realice el filtrado his1
-    console.log(data.pokemon)
-    console.log(tipo.name.toString())
     menuTipos.style.display = 'none'
     const pokemonesTipo = filtrarTipos(data, tipo.name)
     bloqueTarjetas.innerHTML = tarjetaDataString(pokemonesTipo)
@@ -122,8 +109,6 @@ for (const tipo of tipoPokemon) {
 //para ocultar menu ordenar cuando se hace clic a un item
 for (const item of menuOrdenar) {
   item.addEventListener("click", () => {
-    //el console seria sustituido por el llamado a funcion que realice el ordenado
-    console.log(item.name)
     item.parentElement.parentElement.style.display = 'none'
     if (item.name === "defecto") {
       bloqueTarjetas.innerHTML = tarjetaDataString(dataDefecto);
@@ -142,8 +127,6 @@ for (const item of menuOrdenar) {
 //para ocultar  el menu top cuando se hace clic a un item  para historia Nº4
 for (const item of menuTop) {
   item.addEventListener("click", () => {
-    //el console seria sustituido por el llamado a funcion que devuelva el top10
-    console.log(item.name)
     top10Aparicion(item.name)
     item.parentElement.parentElement.style.display = 'none'
   })
@@ -168,8 +151,6 @@ for (let i = 0; i < menuPrincipal.length; i++) {
 
 const inputBuscar = document.getElementById("inputBuscar")
 inputBuscar.addEventListener('input', () => {
-  //console.log(inputBuscar.value)
-
   const FiltroNombre = buscarPorNombre(data, inputBuscar.value)
   bloqueTarjetas.innerHTML = tarjetaDataString(FiltroNombre)
 });

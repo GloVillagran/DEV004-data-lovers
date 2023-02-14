@@ -1,4 +1,4 @@
-import { tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre, cortarTop, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente,calculoPorcentaje } from '../src/data.js';
+import { tarjetaDataString, ordenarArregloNumero, filtrarTipos, buscarPorNombre, cortarTop, ordenarAlfabeticamenteAscendente, ordenarAlfabeticamenteDescendente,calculoPorcentaje, calcularPromedioPorTipo } from '../src/data.js';
 //import data from '../src/data/pokemon/pokemon.js';
 
 //data para hacer pruebas 
@@ -58,9 +58,11 @@ const data = {
   ]
 }
 
+//data falsa para testear la funcion de ordenar alfabeticamente
+
 const data2 = {
   "pokemon": [
-   
+    
     {
       "num": "001",
       "name": "bulbasaur",
@@ -124,7 +126,82 @@ const data2 = {
 
   ]
 }
+//data falsa para testear la funcion de calculo de promedio segun tipo y stats
+const data3 = {
+  "pokemon": [
+    {
+      "name": "bulbasaur",
+      "type": [
+        "agua",
+        "oscuro"
+      ],
+      "stats": {
+        "base-attack": "155",
+        "base-defense": "153",
+        "base-stamina": "111",
+        "max-cp": "1544",
+        "max-hp": "99"
+      },
+    },
+    {
+      "name": "venusaur",
+      "type": [
+        "oscuro",
+        "normal"
+      ],
+      "stats": {
+        "base-attack": "207",
+        "base-defense": "201",
+        "base-stamina": "172",
+        "max-cp": "2786",
+        "max-hp": "147"
+      },
+    },
+    {
+      "name": "squirtle",
+      "type": [
+        "dragon",
+        "oscuro"
+      ],
+      "stats": {
+        "base-attack": "220",
+        "base-defense": "186",
+        "base-stamina": "155",
+        "max-cp": "2713",
+        "max-hp": "134"
+      },
+    },
+    {
+      "name": "charizard",
+      "type": [
+        "agua",
+        "volador"
+      ],
+      "stats": {
+        "base-attack": "221",
+        "base-defense": "159",
+        "base-stamina": "190",
+        "max-cp": "2783",
+        "max-hp": "162"
+      },
+    },
+    {
+      "name": "charmander",
+      "type": [
+        "agua",
+        "volador"
+      ],
+      "stats": {
+        "base-attack": "190",
+        "base-defense": "169",
+        "base-stamina": "330",
+        "max-cp": "3225",
+        "max-hp": "272"
+      },
+    }
 
+  ]
+}
 
 
 describe('tarjetaDataString', () => {
@@ -523,76 +600,21 @@ describe('calculoPorcentaje', () => {
     expect(typeof calculoPorcentaje).toBe('function');
   });
 
-
-  it('ordenarAlfabeticamenteDescendente(data) retorna los pokemones ordenados alfabeticamente ZA', () => {
-    const midata=JSON.parse(JSON.stringify(data2))
-    expect(ordenarAlfabeticamenteDescendente(midata)).toStrictEqual(
-      {
-        "pokemon": [
-          {
-            "num": "005",
-            "name": "venusaur",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.8",
-            "type": [
-              "oscuro",
-              "normal"
-            ],
-          },
-          {
-            "num": "007",
-            "name": "squirtle",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.1",
-            "type": [
-              "dragon",
-              "oscuro"
-            ]
-          },
-          {
-            "num": "009",
-            "name": "charmander",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.8",
-            "type": [
-              "agua",
-              "volador"
-            ],
-          },
-          {
-            "num": "002",
-            "name": "charizard",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.35",
-            "type": [
-              "agua",
-              "volador"
-            ],
-          },
-          {
-            "num": "001",
-            "name": "bulbasaur",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.3",
-            "type": [
-              "agua",
-              "oscuro"
-            ],
-          },
-          {
-            "num": "001",
-            "name": "bulbasaur",
-            "pokemon-rarity": "normal",
-            "spawn-chance": "0.3",
-            "type": [
-              "agua",
-              "oscuro"
-            ],
-          }
-        
-        ]
-      });
+  it('calculoPorcentaje(2,6) esta funcion retorna "33.33"', () => {
+    
+    expect(calculoPorcentaje(2,6)).toBe("33.33");
   });
 
+});
+
+describe('calcularPromedioPorTipo', () => {
+  it('es funcion', () => {
+    expect(typeof calcularPromedioPorTipo).toBe('function');
+  });
+
+  it('calcularPromedioPorTipo(data3.pokemon, "agua", "base-attack") esta funcion retorna "188.67"', () => {
+    
+    expect(calcularPromedioPorTipo(data3.pokemon, "agua", "base-attack")).toBe("188.67");
+  });
 
 });

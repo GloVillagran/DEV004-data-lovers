@@ -12,7 +12,7 @@ export const tarjetaDataString = (data) => {
         <p>${pokemon.name}</p>
       </section>
     `
-    //console.log(pokemon.name);
+    //.log(pokemon.name);
 
   }
   return tarjetaString;
@@ -36,7 +36,6 @@ export const cortarTop = (dataOrdenada, top) => {
 
 export const filtrarTipos = (data, tipo) => {
   const dataFiltrada = data.pokemon.filter((pokemon) => pokemon.type.includes(tipo))
-  //console.log(dataFiltrada);
   return { pokemon: dataFiltrada }
 }
 
@@ -90,12 +89,7 @@ export const calculoPorcentaje = (cantidadTipo,totalPokemon) => {
 
 //funcion reduce para calcular promedio de ataque por Tipo 
 export const calcularPromedioPorTipo = (data, tipo, stat) => { //se agregaron 3 parametros, el stat para acceda a la propiedad que quiere calcular(stat es un objeto)
-  //console.log(data)
-  //console.log(tipo)
   const dataFiltrada = data.filter(pokemon => pokemon.type.includes(tipo)) //si en el arreglo se incluye el tipo (ej. agua)
-  //console.log(dataFiltrada);
-  //console.log(typeof dataFiltrada[0].stats)
-  //console.log(dataFiltrada[0].stats)
   const sumaAtaques = dataFiltrada.reduce((acc,value) => acc+Number(value.stats[stat]), 0) //los valores estaban en string, se paso a numero.
   return (sumaAtaques/dataFiltrada.length).toFixed(2) //resultado con dos decimales //length para saber la cantidad que hay de esos tipos
 }
