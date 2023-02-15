@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width"/>
+    <title>Data Lovers</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div id="titulo">
+        <h1>Pokemon</h1>
+        <div>
+          <img src="./img/logo1.png" alt="">
+          <img src="./img/logo2.png" alt="">
+          <img src="./img/ash.png" alt="">
+        </div>
+      </div>
+      <nav>
+        <ul class="menu-horizontal">
+          <li  class="menuPrincipal">
+            <div class="imagenMenu">
+              <img src="./img/filtrar.png" alt="">
+              <a href="#">FILTRAR POR TIPO</a>
+            </div>
+
+            <ul class="menu-vertical menu-tipos">
+              <div>
+                <li ><a href="#" name="water" class="tipoPokemon">Agua</a></li>
+                <li ><a href="#" name="fire" class="tipoPokemon">Fuego</a></li>
+                <li><a href="#" name="grass" class="tipoPokemon">Planta</a></li>
+                <li><a href="#" name="ground" class="tipoPokemon">Tierra</a></li>
+                <li><a href="#" name="rock" class="tipoPokemon">Roca</a></li>
+                <li><a href="#" name="steel" class="tipoPokemon">Metal</a></li>
+                <li><a href="#" name="ice" class="tipoPokemon">Hielo</a></li>
+                <li><a href="#" name="electric" class="tipoPokemon">Eléctrico</a></li>
+                <li><a href="#" name="dragon" class="tipoPokemon">Dragon</a></li>
+              </div>
+              <div>
+                <li><a href="#" name="ghost" class="tipoPokemon">Fantasma</a></li>
+                <li><a href="#" name="psychic" class="tipoPokemon">Psiquico</a></li>
+                <li><a href="#" name="normal" class="tipoPokemon">Normal</a></li>
+                <li><a href="#" name="fighting" class="tipoPokemon">Lucha</a></li>
+                <li><a href="#" name="poison" class="tipoPokemon">Veneno</a></li>
+                <li><a href="#" name="bug" class="tipoPokemon">Insecto</a></li>
+                <li><a href="#" name="flying" class="tipoPokemon">Volador</a></li>
+                <li><a href="#" name="dark" class="tipoPokemon">Oscuro</a></li>
+                <li><a href="#" name="fairy" class="tipoPokemon">Hada</a></li>
+              </div>
+            </ul>
+          </li>
+          <li class="menuPrincipal">
+            <div class="imagenMenu">
+              <img src="./img/ordenar.png" alt="">
+              <a href="#">ORDENAR</a>
+            </div>
+            <ul class="menu-vertical">
+              <li><a href="#" name="defecto" class="menuOrdenar">Por defecto</a></li>
+              <li><a href="#" name="AZ" class="menuOrdenar">A-Z</a></li>
+              <li><a href="#" name="ZA" class="menuOrdenar">Z-A</a></li>
+            </ul>
+          </li>
+          <li class="menuPrincipal">
+            <div class="imagenMenu">              
+              <a href="#">TOP 10 APARICIÓN</a>
+            </div>
+            <ul class="menu-vertical">
+              <li><a href="#" name="masAparicion" class="menuTop">Más Apariciones</a></li>
+              <li><a href="#" name="menosAparicion" class="menuTop">Menos Apariciones</a></li>
+            </ul>
+          </li>
+          <li  id="menuEstadistica">
+            <div class="imagenMenu">              
+              <a href="#">ESTADISTICA DE TIPOS</a>
+            </div>
+          </li>
+          <li class="buscar">
+            <input type="text" name="" id="inputBuscar" placeholder="buscar">
+            <img src="./img/buscar.png" alt="">
+          </li>
+        </ul>
+      </nav>
+    </header>
+    <main id="bloqueTarjetas">
+    <!--   <section class="tarjeta">
+        <img class="imagenPokemon" src="https://www.serebii.net/pokemongo/pokemon/001.png" alt="">
+        <p>bulbasaur</p>
+      </section>
+      <section class="tarjeta">
+        <img class="imagenPokemon" src="https://www.serebii.net/pokemongo/pokemon/002.png" alt="">
+        <p>ivysa</p>
+      </section>
+      <section class="tarjeta">
+        <img class="imagenPokemon" src="https://www.serebii.net/pokemongo/pokemon/003.png" alt="">
+        <p>venusaur</p>
+      </section> -->
+      
+      <div class="estadistica">
+        <h2>ESTADISTICA DE TIPOS</h2>
+        <table>          
+          <thead>
+            <tr>
+              <th>Tipo</th>
+              <th>Cantidad Total</th>
+              <th>% del Total</th>
+              <th>Promedio Ataque</th>
+              <th>Promedio Defensa</th>
+              <th>Promedio de Puntos de Salud (HP)</th>
+            </tr>
+          </thead>          
+          <tbody>
+            <tr>
+              <td>Electrico</td>
+              <td>10</td>
+              <td>10%</td>
+              <td>120</td>
+              <td>100</td>
+              <td>120</td>
+            </tr>
+            
+            <tr>
+              <td>Electrico</td>
+              <td>10</td>
+              <td>10%</td>
+              <td>120</td>
+              <td>100</td>
+              <td>120</td>
+            </tr>
+            
+            <tr>
+              <td>Electrico</td>
+              <td>10</td>
+              <td>10%</td>
+              <td>120</td>
+              <td>100</td>
+              <td>120</td>
+            </tr>
+            
+            <tr>
+              <td>Electrico</td>
+              <td>10</td>
+              <td>10%</td>
+              <td>120</td>
+              <td>100</td>
+              <td>120</td>
+            </tr>
+            
+            <tr>
+              <td>Electrico</td>
+              <td>10</td>
+              <td>10%</td>
+              <td>120</td>
+              <td>100</td>
+              <td>120</td>
+            </tr>
+            
+            <tr>
+              <td>Electrico</td>
+              <td>10</td>
+              <td>10%</td>
+              <td>120</td>
+              <td>100</td>
+              <td>120</td>
+            </tr>
+          </tbody>
+          
+          
+        </table>
+      </div>
+
+
+
+
+
+    </main>
+    <div id="root"></div>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
