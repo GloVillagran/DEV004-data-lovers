@@ -239,7 +239,7 @@ nav{
   .estadistica{
     margin:  auto;
   }
-  table, td,th { border-style: solid; border-collapse:collapse;padding: 7px;border-width: 1px;  }
+  table, td,th { border-style: solid; border-collapse:collapse;padding: 7px;border-width: 1px;  } 
   thead{
     background-color: #61876E;
   }
