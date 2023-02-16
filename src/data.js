@@ -8,7 +8,7 @@ export const tarjetaDataString = (data) => {
   for (const pokemon of data.pokemon) {
     tarjetaString += `
       <section class="tarjeta">
-        <img class="imagenPokemon" src=${pokemon.img} alt=`${pokemon.img}`>
+        <img class="imagenPokemon" src=${pokemon.img} alt=Imagen de ${pokemon.img}>
         <p>${pokemon.name}</p>
       </section>
     `
